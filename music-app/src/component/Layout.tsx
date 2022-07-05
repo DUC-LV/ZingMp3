@@ -6,7 +6,7 @@ const Layout = ({ children }: React.PropsWithChildren<{}>) => {
             <Header />
             {children}
         </div>
-    )
-}
+    );
+};
 
 export default Layout;
