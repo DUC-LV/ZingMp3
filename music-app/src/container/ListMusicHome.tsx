@@ -1,5 +1,7 @@
 import React from "react";
 import { VscDebugStart } from "react-icons/vsc";
+import { useRouter } from "next/router";
+import { convertSlug } from "../untils";
 export interface Data {
     image?: string;
     title?: string;
@@ -11,13 +13,17 @@ interface DataListMusicHome {
     dataListMusicHome1?: Data[];
     dataListMusicHome2?: Data[];
     name?: string;
+    path?: string;
+    slug?: string;
 }
 const ListMusicHome = ({
     dataListMusicHome1,
     dataListMusicHome2,
     name,
+    path,
+    slug,
 }: DataListMusicHome) => {
-    console.log(dataListMusicHome2);
+    const router = useRouter();
     return (
         <>
             <h2 className="list_music_home_title">{name}</h2>
@@ -29,6 +35,15 @@ const ListMusicHome = ({
                                 <div
                                     className="list_music_home_left_box"
                                     key={index}
+                                    onClick = {() => {
+                                        router.push({
+                                            pathname:path,
+                                            query: {
+                                                [String(slug)]:convertSlug(String(item.title)),
+                                                key:item.key,
+                                            }
+                                        })
+                                    }}
                                 >
                                     <img
                                         src={item.image}
@@ -58,6 +73,15 @@ const ListMusicHome = ({
                                 <div
                                     className="list_music_home_left_box"
                                     key={index}
+                                    onClick = {() => {
+                                        router.push({
+                                            pathname:path,
+                                            query: {
+                                                [String(slug)]:convertSlug(String(item.title)),
+                                                key:item.key,
+                                            }
+                                        })
+                                    }}
                                 >
                                     <img
                                         src={item.image}
@@ -95,7 +119,7 @@ const ListMusicHome = ({
                 }
                 .list_music_home_left_box{
                     height:120px;
-                    width:710px;
+                    width:460px;
                     background:#202a34;
                 }
                 .list_music_home_left_box_img{
@@ -111,15 +135,16 @@ const ListMusicHome = ({
                 }
                 .list_music_home_left_box_box{
                     color:white;
-                    margin-left:80px;
+                    margin-left:30px;
                     margin-top:20px;
                 }
                 .list_music_home_right{
-                    margin-left:100px;
+                    position:relative;
+                    left:70px;
                 }
                 .a{
                     position:relative;
-                    left:400px;
+                    left:210px;
                     bottom:50px;
                     color:white;
                     cursor:pointer;

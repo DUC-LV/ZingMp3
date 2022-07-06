@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { convertSlug } from "../untils";
 export interface DataSlider {
     image?: string;
     title?: string;
@@ -13,9 +14,11 @@ interface DataSlide {
     dataSlider?: DataSlider[];
     setting?: any;
     name?: string;
+    path?: string;
+    slug?: string;
 }
 const SlideShow = (props: DataSlide) => {
-    const { dataSlider, setting, name } = props;
+    const { dataSlider, setting, name, path, slug } = props;
     const router = useRouter();
     return (
         <div className="slide_show">
@@ -28,8 +31,11 @@ const SlideShow = (props: DataSlide) => {
                             key={index}
                             onClick={() => {
                                 router.push({
-                                    pathname: "",
-                                    query: {},
+                                    pathname:path,
+                                    query: {
+                                        [String(slug)]:convertSlug(String(item.title)),
+                                        key : item.key
+                                    },
                                 });
                             }}
                         >
@@ -48,14 +54,14 @@ const SlideShow = (props: DataSlide) => {
                 .slide_show{
                     margin-top:40px;
                     width:94.5%;
-                    margin-left:60px;
+                    margin-left:40px;
                 }
                 .slide_show_name{
                     color:white;
                 }
                 .slide_show_img{
-                    height:210px;
-                    width:280px;
+                    height:110px;
+                    width:210px;
                     cursor:pointer;
                     border-radius:10px;
                 }

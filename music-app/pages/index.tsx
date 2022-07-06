@@ -153,6 +153,8 @@ const Home = () => {
                     slidesToShow: 5,
                     slidesToScroll: 1,
                 }}
+                path = "/playlist/[slugPlaylist]"
+                slug = "slugPlaylist"
             />
             <SlideShow
                 name={dataTopicEvent?.[1].groupName}
@@ -172,6 +174,8 @@ const Home = () => {
                     slidesToShow: 5,
                     slidesToScroll: 1,
                 }}
+                path = "/playlist/[slugPlaylist]"
+                slug = "slugPlaylist"
             />
             <SlideShow
                 name={dataTopicEvent?.[2].groupName}
@@ -191,6 +195,8 @@ const Home = () => {
                     slidesToShow: 5,
                     slidesToScroll: 1,
                 }}
+                path = "/playlist/[slugPlaylist]"
+                slug = "slugPlaylist"
             />
             <SlideShow
                 name="Mới Phát Hành"
@@ -208,23 +214,8 @@ const Home = () => {
                     slidesToShow: 5,
                     slidesToScroll: 1,
                 }}
-            />
-            <SlideShow
-                name="Top 100"
-                dataSlider={dataTop100?.map((item: any) => {
-                    return {
-                        image: item.thumbnail,
-                        title: item.title,
-                        key: item.key,
-                        url: item.url,
-                    };
-                })}
-                setting={{
-                    infinite: true,
-                    speed: 500,
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                }}
+                path = "/music/[slugMusic]"
+                slug = "slugMusic"
             />
             <ListMusicHome
                 dataListMusicHome1={dataListMusicHome
@@ -250,7 +241,27 @@ const Home = () => {
                         };
                     })}
                 name="Bài Hát"
+                path = "/music/[slugMusic]"
+                slug = "slugMusic"
             />
+            <SlideShow
+                name="Top 100"
+                dataSlider={dataTop100?.map((item: any) => {
+                    return {
+                        image: item.thumbnail,
+                        title: item.title,
+                        key: item.key,
+                        url: item.url,
+                    };
+                })}
+                setting={{
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                }}
+            />
+            
             <style>{`
                 .index{
                     margin-left:250px;
