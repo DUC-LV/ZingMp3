@@ -121,7 +121,7 @@ const Header = () => {
             .header_container{
                 width:250px;
                 height:100%;
-            position:fixed;
+                position:fixed;
                 left:0;
                 background:#231b2e;
             }

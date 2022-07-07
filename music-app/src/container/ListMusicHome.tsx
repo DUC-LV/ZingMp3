@@ -1,5 +1,4 @@
 import React from "react";
-import { VscDebugStart } from "react-icons/vsc";
 import { useRouter } from "next/router";
 import { convertSlug } from "../untils";
 export interface Data {
@@ -56,10 +55,10 @@ const ListMusicHome = ({
                                         <p className="list_music_home_left_box_box_artist">
                                             {item.artists}
                                         </p>
-                                        <p className="a">
+                                        {/* <p className="a">
                                             <VscDebugStart />
                                             {item.duration}
-                                        </p>
+                                        </p> */}
                                     </div>
                                 </div>
                             </>
@@ -94,10 +93,10 @@ const ListMusicHome = ({
                                         <p className="list_music_home_left_box_box_artist">
                                             {item.artists}
                                         </p>
-                                        <p className="a">
+                                        {/* <p className="a">
                                             <VscDebugStart />
                                             {item.duration}
-                                        </p>
+                                        </p> */}
                                     </div>
                                 </div>
                             </>
@@ -119,7 +118,7 @@ const ListMusicHome = ({
                 }
                 .list_music_home_left_box{
                     height:120px;
-                    width:460px;
+                    width:390px;
                     background:#202a34;
                 }
                 .list_music_home_left_box_img{

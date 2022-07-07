@@ -52,8 +52,7 @@ const SlideShow = (props: DataSlide) => {
             </Slider>
             <style>{`
                 .slide_show{
-                    margin-top:40px;
-                    width:94.5%;
+                    width:900px;
                     margin-left:40px;
                 }
                 .slide_show_name{
@@ -61,13 +60,17 @@ const SlideShow = (props: DataSlide) => {
                 }
                 .slide_show_img{
                     height:110px;
-                    width:210px;
+                    width:170px;
                     cursor:pointer;
                     border-radius:10px;
+                    position:relative;
+                    top:20px;
+                    left:5px;
                 }
                 .slide_show_title{
                     color:white;
                     cursor:pointer;
+                    margin-top:25px;
                 }
                 .slide_show_title:hover{
                     color:#28acf3

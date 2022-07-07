@@ -30,7 +30,6 @@ const Slide = (props: DataSlide) => {
                     return (
                         <div
                             className="slide_item"
-                            key={index}
                             onClick={() => {
                                 router.push({
                                     pathname: "",
@@ -47,17 +46,19 @@ const Slide = (props: DataSlide) => {
             </Slider>
             <style>{`
                 .slide{
-                    margin-top:20px;
-                    width:94.5%;
+                    width:900px;
                     margin-left:40px;
                 }
                 .slide_name{
                     color:white;
                 }
+                .slide_item{
+                }
                 .slide_img{
                     border-radius:10px;
                     cursor:pointer;
-                    width:98%;
+                    height:500px;
+                    width:900px;
                 }
             `}</style>
         </div>
