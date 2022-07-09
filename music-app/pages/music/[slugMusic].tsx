@@ -6,7 +6,8 @@ import {
     AiOutlineShareAlt,
 } from "react-icons/ai";
 import { imgDefaut } from "../../src/untils";
-import ListMusicHome from "../../src/container/ListMusicHome";
+import MusicHome from "../../src/container/MusicHome";
+import ListMusic from "../../src/container/ListMusic";
 const slugMusic = () => {
     const { getSong, getLyric, explore } = require("nhaccuatui-api-full");
     const router = useRouter();
@@ -35,151 +36,163 @@ const slugMusic = () => {
     if (dataSong?.thumbnail == "") {
         dataSong.thumbnail = imgDefaut;
     }
-
+    if (
+        dataSong?.artists?.[0]?.name == "" ||
+        dataSong?.artists?.[1]?.name == "" ||
+        dataSong?.artists?.[2]?.name == ""
+    ) {
+        dataSong.artists[0].name = imgDefaut;
+        dataSong.artists[1].name = imgDefaut;
+        dataSong.artists[2].name = imgDefaut;
+    }
     return (
-        <div className="music">
-            <div className="music_header">
-                <img
-                    src={dataSong?.thumbnail}
-                    className="music_header_img"
-                ></img>
-                <div className="music_header_info">
-                    <div className="music_header_info_name">
-                        <p className="p_p">Bài hát : </p>
-                        <h3 className="h3_h3">{dataSong?.title}</h3>
-                    </div>
-                    <div className="music_header_info_artist">
-                        <img
-                            className="music_header_info_artist_img"
-                            src={dataSong?.artists?.[0]?.imageUrl}
-                        />
-                        <img
-                            className="music_header_info_artist_img"
-                            src={dataSong?.artists?.[1]?.imageUrl}
-                        />
-                        <img
-                            className="music_header_info_artist_img"
-                            src={dataSong?.artists?.[2]?.imageUrl}
-                        />
-                        <p className="music_header_info_artist_title">
-                            {dataSong?.artists?.[0]?.name}
-                            {dataSong?.artists?.[1]?.name}
-                            {dataSong?.artists?.[2]?.name}
-                        </p>
-                    </div>
-                    <p className="music_header_info_title">
-                        Đăng tải bởi: {dataLyric?.userNameUpload}
-                    </p>
-                    <div className="music_header_info_tag">
-                        <p>composer: {dataLyric?.composer}</p>
-                    </div>
-                </div>
-            </div>
-            {/** */}
-            <div className="music_body">
-                <div className="music_body_left">
+        <div className="Music">
+            <div className="music">
+                <div className="music_header">
                     <img
-                        src={dataSong?.artists?.[0]?.imageUrl}
-                        className="music_body_left_img"
+                        src={dataSong?.thumbnail}
+                        className="music_header_img"
                     ></img>
-                    <div className="music_body_left_info">
-                        <p>Tạo bởi:</p>
-                        <h4 className="h4_h4">{dataLyric?.userNameUpload}</h4>
+                    <div className="music_header_info">
+                        <div className="music_header_info_name">
+                            <p className="p_p">Bài hát : </p>
+                            <h3 className="h3_h3">{dataSong?.title}</h3>
+                        </div>
+                        <div className="music_header_info_artist">
+                            <img
+                                className="music_header_info_artist_img"
+                                src={dataSong?.artists?.[0]?.imageUrl}
+                            />
+                            <p className="music_header_info_artist_title">
+                                {dataSong?.artists?.[0]?.name}
+                            </p>
+                        </div>
+                        <p className="music_header_info_title">
+                            Đăng tải bởi: {dataLyric?.userNameUpload}
+                        </p>
+                        <div className="music_header_info_tag">
+                            <p>composer: {dataLyric?.composer}</p>
+                        </div>
                     </div>
                 </div>
-                <div className="music_body_right">
-                    <div className="music_body_right_icon">
-                        <AiFillFolderAdd
-                            style={{
-                                height: "30px",
-                                width: "30px",
-                                cursor: "pointer",
-                                color: "#5e968b",
-                                position: "relative",
-                                top: "20px",
-                            }}
-                        />
-                        <AiOutlineDownload
-                            style={{
-                                height: "30px",
-                                width: "30px",
-                                cursor: "pointer",
-                                color: "white",
-                                position: "relative",
-                                left: "20px",
-                                top: "20px",
-                            }}
-                        />
-                        <AiOutlineShareAlt
-                            style={{
-                                height: "30px",
-                                width: "30px",
-                                cursor: "pointer",
-                                color: "#df2e3c",
-                                position: "relative",
-                                left: "30px",
-                                top: "20px",
-                            }}
-                        />
+                <div className="music_body">
+                    <div className="music_body_left">
+                        <img
+                            src={dataSong?.artists?.[0]?.imageUrl}
+                            className="music_body_left_img"
+                        ></img>
+                        <div className="music_body_left_info">
+                            <p>Tạo bởi:</p>
+                            <h4 className="h4_h4">
+                                {dataLyric?.userNameUpload}
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="music_body_right">
+                        <div className="music_body_right_icon">
+                            <AiFillFolderAdd
+                                style={{
+                                    height: "30px",
+                                    width: "30px",
+                                    cursor: "pointer",
+                                    color: "#5e968b",
+                                    position: "relative",
+                                    top: "20px",
+                                }}
+                            />
+                            <AiOutlineDownload
+                                style={{
+                                    height: "30px",
+                                    width: "30px",
+                                    cursor: "pointer",
+                                    color: "white",
+                                    position: "relative",
+                                    left: "20px",
+                                    top: "20px",
+                                }}
+                            />
+                            <AiOutlineShareAlt
+                                style={{
+                                    height: "30px",
+                                    width: "30px",
+                                    cursor: "pointer",
+                                    color: "#df2e3c",
+                                    position: "relative",
+                                    left: "30px",
+                                    top: "20px",
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
+                <audio
+                    src={dataSong?.streamUrls?.[0]?.streamUrl}
+                    controls
+                    className="audio"
+                    // autoPlay
+                    preload="auto"
+                ></audio>
+                {/* <div className="lyric">
+                    <h3 className="lyric_title">Lời bài hát</h3>
+                    <p className="lyric_name">{dataLyric?.lyric}</p>
+                </div> */}
+                <MusicHome
+                    dataListMusicHome1={items
+                        ?.slice(0, Number(items?.length) / 2)
+                        ?.map((item: any) => {
+                            if (item?.thumbnail == "") {
+                                item.thumbnail = imgDefaut;
+                            }
+                            return {
+                                image: item.thumbnail,
+                                title: item.title,
+                                key: item.key,
+                                artists: item.artists?.[0].name,
+                                duration: item.duration,
+                            };
+                        })}
+                    dataListMusicHome2={items
+                        ?.slice(
+                            Number(items.length) / 2 + 1,
+                            Number(items.length)
+                        )
+                        ?.map((item: any) => {
+                            if (item?.thumbnail == "") {
+                                item.thumbnail = imgDefaut;
+                            }
+                            return {
+                                image: item?.thumbnail,
+                                title: item?.title,
+                                key: item?.key,
+                                artists: item?.artists?.[0]?.name,
+                                duration: item?.duration,
+                            };
+                        })}
+                    name="Có Thể Bạn Cũng Thích"
+                    path="/music/[slugMusic]"
+                    slug="slugMusic"
+                />
             </div>
-            {/** */}
-            <audio
-                src={dataSong?.streamUrls?.[0]?.streamUrl}
-                controls
-                className="audio"
-                // autoPlay
-                preload="auto"
-            ></audio>
-            {/** */}
-            <div className="lyric">
-                <h3 className="lyric_title">Lời bài hát</h3>
-                <p className="lyric_name">{dataLyric?.lyric}</p>
+            <div className="List_music">
+                <ListMusic
+                    pathMv="/video/[slugVideo]"
+                    slugMv="slugVideo"
+                    pathSong="/music/[slugMusic]"
+                    slugSong="slugMusic"
+                />
             </div>
-            {/** */}
-            <ListMusicHome
-                dataListMusicHome1={items
-                    ?.slice(0, Number(items?.length) / 2)
-                    ?.map((item: any) => {
-                        if (item?.thumbnail == "") {
-                            item.thumbnail = imgDefaut;
-                        }
-                        return {
-                            image: item.thumbnail,
-                            title: item.title,
-                            key: item.key,
-                            artists: item.artists?.[0].name,
-                            duration: item.duration,
-                        };
-                    })}
-                dataListMusicHome2={items
-                    ?.slice(Number(items.length) / 2 + 1, Number(items.length))
-                    ?.map((item: any) => {
-                        if (item?.thumbnail == "") {
-                            item.thumbnail = imgDefaut;
-                        }
-                        return {
-                            image: item.thumbnail,
-                            title: item.title,
-                            key: item.key,
-                            artists: item.artists?.[0].name,
-                            duration: item.duration,
-                        };
-                    })}
-                name="Danh sách bài mới"
-                path="/music/[slugMusic]"
-                slug="slugMusic"
-            />
             <style>{`
+                .Music{
+                    display:flex;
+                }
                 .audio{
-                    width:1100px;
+                    width:865px;
                     margin-left:60px;
                     margin-top:30px;
                     outline:none;
                 }
                 .music{
-                    margin-left:250px;
+                    margin-left:230px;
                 }
                 .music_header{
                     margin-left:60px;
@@ -196,13 +209,14 @@ const slugMusic = () => {
                     height:238px;
                     width:238px;
                     border-radius:8px;
+                    margin-top:10px;
                 }
                 .music_header_info{
                     margin-left:50px;
                 }
                 .music_header_info_artist_img{
-                    height:30px;
-                    width:30px;
+                    height:40px;
+                    width:40px;
                     border-radius:50%;
                     position:relative;
                     top:40px;
@@ -214,8 +228,8 @@ const slugMusic = () => {
                 }
                 .music_header_info_artist_title{
                     position:relative;
-                    left:45px;
-                    top:25px;
+                    left:40px;
+                    top:32px;
                 }
                 .music_header_info,.music_header_info_artist{
                     position:relative;
@@ -250,7 +264,7 @@ const slugMusic = () => {
                 }
                 .music_body{
                     height:70px;
-                    width:1100px;
+                    width:865px;
                     background:#231b2e;
                     margin-left:60px;
                     border-radius:6px;
@@ -275,7 +289,7 @@ const slugMusic = () => {
                     bottom:10px;
                 }
                 .music_body_right_icon{
-                    margin-left:630px;
+                    margin-left:400px;
                 }
                 .lyric{
                     margin-left:60px;
@@ -285,7 +299,7 @@ const slugMusic = () => {
                     color:grey;
                 }
                 .lyric_name{
-                    width:1000px;
+                    width:850px;
                 }
             `}</style>
         </div>

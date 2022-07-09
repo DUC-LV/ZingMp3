@@ -1,4 +1,5 @@
 import React from "react";
+import { VscDebugStart } from "react-icons/vsc";
 import { useRouter } from "next/router";
 import { convertSlug } from "../untils";
 export interface Data {
@@ -15,7 +16,7 @@ interface DataListMusicHome {
     path?: string;
     slug?: string;
 }
-const ListMusicHome = ({
+const MusicHome = ({
     dataListMusicHome1,
     dataListMusicHome2,
     name,
@@ -34,31 +35,29 @@ const ListMusicHome = ({
                                 <div
                                     className="list_music_home_left_box"
                                     key={index}
-                                    onClick = {() => {
+                                    onClick={() => {
                                         router.push({
-                                            pathname:path,
+                                            pathname: path,
                                             query: {
-                                                [String(slug)]:convertSlug(String(item.title)),
-                                                key:item.key,
-                                            }
-                                        })
+                                                [String(slug)]: convertSlug(
+                                                    item.title
+                                                ),
+                                                key: item.key,
+                                            },
+                                        });
                                     }}
                                 >
                                     <img
-                                        src={item.image}
+                                        src={item?.image}
                                         className="list_music_home_left_box_img"
                                     />
                                     <div className="list_music_home_left_box_box">
                                         <p className="list_music_home_left_box_box_title">
-                                            {item.title}
+                                            {item?.title}
                                         </p>
                                         <p className="list_music_home_left_box_box_artist">
-                                            {item.artists}
+                                            {item?.artists}
                                         </p>
-                                        {/* <p className="a">
-                                            <VscDebugStart />
-                                            {item.duration}
-                                        </p> */}
                                     </div>
                                 </div>
                             </>
@@ -72,31 +71,29 @@ const ListMusicHome = ({
                                 <div
                                     className="list_music_home_left_box"
                                     key={index}
-                                    onClick = {() => {
+                                    onClick={() => {
                                         router.push({
-                                            pathname:path,
+                                            pathname: path,
                                             query: {
-                                                [String(slug)]:convertSlug(String(item.title)),
-                                                key:item.key,
-                                            }
-                                        })
+                                                [String(slug)]: convertSlug(
+                                                    item.title
+                                                ),
+                                                key: item.key,
+                                            },
+                                        });
                                     }}
                                 >
                                     <img
-                                        src={item.image}
+                                        src={item?.image}
                                         className="list_music_home_left_box_img"
                                     />
                                     <div className="list_music_home_left_box_box">
                                         <p className="list_music_home_left_box_box_title">
-                                            {item.title}
+                                            {item?.title}
                                         </p>
                                         <p className="list_music_home_left_box_box_artist">
-                                            {item.artists}
+                                            {item?.artists}
                                         </p>
-                                        {/* <p className="a">
-                                            <VscDebugStart />
-                                            {item.duration}
-                                        </p> */}
                                     </div>
                                 </div>
                             </>
@@ -107,27 +104,29 @@ const ListMusicHome = ({
                 .list_music_home_title{
                     color:white;
                     margin-left:60px;
-                    margin-top:40px;
                 }
                 .list_music_home,.list_music_home_left_box{
                     display:flex;
                 }
                 .list_music_home_left_box{
                     border-radius:8px;
-                    margin-top:10px;
+                    margin-top:8px;
                 }
                 .list_music_home_left_box{
                     height:120px;
-                    width:390px;
+                    width:380px;
                     background:#202a34;
+                }
+                .list_music_home_left_box:hover{
+                    background:grey;
                 }
                 .list_music_home_left_box_img{
                     height:100px;
                     width:100px;
                     border-radius:8px;
-                    margin-top:10px;
                     margin-left:20px;
                     cursor:pointer;
+                    margin-top:10px;
                 }
                 .list_music_home{
                     margin-left:60px;
@@ -138,20 +137,11 @@ const ListMusicHome = ({
                     margin-top:20px;
                 }
                 .list_music_home_right{
-                    position:relative;
-                    left:70px;
+                    margin-left:100px;
                 }
-                .a{
-                    position:relative;
-                    left:210px;
-                    bottom:50px;
-                    color:white;
-                    cursor:pointer;
-                }
-                
             `}</style>
             </div>
         </>
     );
 };
-export default ListMusicHome;
+export default MusicHome;

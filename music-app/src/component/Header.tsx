@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useCallback, useEffect} from "react";
+import { useRouter } from "next/router";
 import {
     AiOutlineHome,
     AiOutlineCompass,
@@ -8,6 +9,8 @@ import {
 import { BsHeadphones } from "react-icons/bs";
 import { FiBarChart2 } from "react-icons/fi";
 const Header = () => {
+    const router = useRouter();
+    
     return (
         <div className="header_container">
             <picture>
@@ -16,24 +19,12 @@ const Header = () => {
                 className="header_img"
                 />
             </picture>
-        {/* <div className="header_login">
-                <p className="header_title1">Đăng nhập</p>
-                <p className="a">|</p>
-                <p className="header_title2">Đăng kí</p>
-            </div> */}
         <div className="header_menu">
-            {/* <p>
-                <AiOutlineSearch
-                    style={{
-                    position: "relative",
-                    top: "2.5px",
-                    right: "10px",
-                    color: "green",
-                    }}
-                />
-                Tìm Kiếm
-                </p> */}
-            <p className="header_menu_icon">
+            <p className="header_menu_icon" onClick={() => {
+                router.push({
+                    pathname:"/"
+                })
+            }}>
             <AiOutlineHome
                 style={{
                 position: "relative",
@@ -119,6 +110,8 @@ const Header = () => {
         </div>
         <style>{`
             .header_container{
+                position:relative;
+                bottom:1px;
                 width:250px;
                 height:100%;
                 position:fixed;

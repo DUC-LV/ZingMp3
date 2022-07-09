@@ -25,6 +25,7 @@ const SlideShow = (props: DataSlide) => {
             <h2 className="slide_show_name">{name}</h2>
             <Slider {...setting}>
                 {dataSlider?.map((item, index) => {
+                    
                     return (
                         <div
                             className="slide_show_item"
@@ -52,20 +53,28 @@ const SlideShow = (props: DataSlide) => {
             </Slider>
             <style>{`
                 .slide_show{
-                    width:900px;
-                    margin-left:40px;
+                    width:880px;
+                    margin-left:50px;
                 }
                 .slide_show_name{
                     color:white;
                 }
-                .slide_show_img{
+                .slide_show_img {
                     height:110px;
-                    width:170px;
+                    width:150px;
                     cursor:pointer;
                     border-radius:10px;
                     position:relative;
                     top:20px;
                     left:5px;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                    -webkit-transition: .3s ease-in-out;
+                    transition: .3s ease-in-out;
+                }
+                .slide_show_img:hover{
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
                 }
                 .slide_show_title{
                     color:white;

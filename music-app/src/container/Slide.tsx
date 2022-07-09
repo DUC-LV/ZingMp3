@@ -46,8 +46,8 @@ const Slide = (props: DataSlide) => {
             </Slider>
             <style>{`
                 .slide{
-                    width:900px;
-                    margin-left:40px;
+                    width:880px;
+                    margin-left:50px;
                 }
                 .slide_name{
                     color:white;
