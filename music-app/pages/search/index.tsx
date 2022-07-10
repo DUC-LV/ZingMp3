@@ -100,21 +100,21 @@ const search = () => {
                 </div>
             </div>
             <style>{`
-            .search{
-                display:flex;
-                margin-left:290px;
-            }
-            .search_index_title{
-                color:white;
-            }
-            .search_index_song{
-                position:relative;
-                right:60px;
-            }
-            .search_index_playlist,.search_index_video{
-                position:relative;
-                right:50px;
-            }
+                .search{
+                    display:flex;
+                    margin-left:290px;
+                }
+                .search_index_title{
+                    color:white;
+                }
+                .search_index_song{
+                    position:relative;
+                    right:60px;
+                }
+                .search_index_playlist,.search_index_video{
+                    position:relative;
+                    right:50px;
+                }
             `}</style>
     </div>
 }
